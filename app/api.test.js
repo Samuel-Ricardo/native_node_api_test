@@ -3,6 +3,7 @@ import { deepEqual, ok } from 'node:assert'
 import { request } from "node:http";
 import { postRequest } from "./util/utils.js";
 import { BASE_URL, VALID } from "./config/config.js";
+import { promises } from "node:dns";
 
 describe('API Products Test Suit', () => {
 
@@ -22,4 +23,11 @@ describe('API Products Test Suit', () => {
 
     _globalToken = data.token 
   }
+
+
+  before(async () => {
+    _server = (await import('./api.js')).app
+
+    await new promises(resolve => _server.once('listening',resolve))
+  })
 })
