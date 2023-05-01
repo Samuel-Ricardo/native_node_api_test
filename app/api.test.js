@@ -1,4 +1,4 @@
-import { describe } from "node:test";
+import { after, before, describe } from "node:test";
 import { deepEqual, ok } from 'node:assert'
 import { request } from "node:http";
 import { postRequest } from "./util/utils.js";
@@ -30,4 +30,11 @@ describe('API Products Test Suit', () => {
 
     await new promises(resolve => _server.once('listening',resolve))
   })
+
+  before(async () => setToken())
+
+  it ()
+
+
+  after(done => _server.close(done))
 })
