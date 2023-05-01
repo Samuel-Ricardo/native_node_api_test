@@ -8,5 +8,5 @@ COPY . ./
 
 USER node
 
-CMD ["npm", "run", "dev"]
+CMD ["npm","run","test","&&","npm", "run", "dev"]
 EXPOSE 3000
