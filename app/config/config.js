@@ -4,3 +4,5 @@ export const VALID = {
 };
 
 export const TOKEN_KEY = "dsffaiu40238";
+
+export BASE_URL = `http://localhost:3000`
