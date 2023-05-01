@@ -23,7 +23,7 @@ async function loginRoute(request, response) {
 async function createProductRoute(request, response) {
   const {description, price} = JSON.parse(await once(request, "data"))
 
-const categories = {
+  const categories = {
       premium: {
         from: 101,
         to: 500
@@ -46,6 +46,19 @@ const categories = {
   response.end(JSON.stringify({category}))
 }
 
+
+function validateHeaders(headers) {
+  try{
+    
+    const auth = headers.authorization.replace(/bearer\s/ig,'')
+    jwt.verify(auth, TOKEN_KEY)
+    return true
+
+  } catch(err) {
+    console.error(err)
+    return false
+  }
+}
 
 async function handler(req, res) {
   res.send({HI:" :D"})
