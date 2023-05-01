@@ -31,9 +31,15 @@ describe('API Products Test Suit', () => {
 
   before(async () => setToken())
 
+  
   it ('It should create a pemiun product', async () => {
     const data = await successfullyPostRequest(`${BASE_URL}/products`, {description:"cookie", price:110})
     deepStrictEqual(data.category, "premium")
+  }) 
+
+  it ('It should create a regular product', async () => {
+    const data = await successfullyPostRequest(`${BASE_URL}/products`, {description:"cookie - basic", price:60})
+    deepStrictEqual(data.category, "regular")
   }) 
 
 
