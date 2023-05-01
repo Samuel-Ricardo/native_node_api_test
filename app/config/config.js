@@ -1,4 +1,4 @@
-export const VALID_USER = {
+export const VALID = {
   user: "Samuel",
   password: "123",
 };
