@@ -61,7 +61,18 @@ function validateHeaders(headers) {
 }
 
 async function handler(req, res) {
-  res.send({HI:" :D"})
+  
+  if(req.url === '/login' && req.method === "POST") { return loginRoute(req, res) }
+
+  if (!validateHeaders(req.headers)) {
+    res.writeHead(400)
+    return res.end("invalid token!")
+  }
+
+  if (req.url == '/products' && req.method === "POST") { return createProductRoute(req, res) }
+
+  res.writeHead(404)
+  res.end('not found!')
 }
 
 const app = createServer(handler).listen(3000, () =>  console.log("listening to 3000"));
