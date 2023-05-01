@@ -48,8 +48,7 @@ async function createProductRoute(request, response) {
 
 
 function validateHeaders(headers) {
-  try{
-    
+  try{ 
     const auth = headers.authorization.replace(/bearer\s/ig,'')
     jwt.verify(auth, TOKEN_KEY)
     return true
