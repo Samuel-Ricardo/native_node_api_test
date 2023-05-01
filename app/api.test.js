@@ -33,15 +33,19 @@ describe('API Products Test Suit', () => {
 
   
   it ('It should create a pemiun product', async () => {
-    const data = await successfullyPostRequest(`${BASE_URL}/products`, {description:"cookie", price:110})
+    const data = await successfullyPostRequest(`${BASE_URL}/products`, {description:"cookie - premiun", price:110})
     deepStrictEqual(data.category, "premium")
   }) 
 
   it ('It should create a regular product', async () => {
-    const data = await successfullyPostRequest(`${BASE_URL}/products`, {description:"cookie - basic", price:60})
+    const data = await successfullyPostRequest(`${BASE_URL}/products`, {description:"cookie :D", price:60})
     deepStrictEqual(data.category, "regular")
   }) 
 
+  it ('It should create a basic product', async () => {
+    const data = await successfullyPostRequest(`${BASE_URL}/products`, {description:"cookie - basic", price:60})
+    deepStrictEqual(data.category, "basic")
+  })
 
   after(done => _server.close(done))
 })
