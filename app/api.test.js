@@ -20,6 +20,6 @@ describe('API Products Test Suit', () => {
     const data = await successfullyPostRequest(`${BASE_URL}/login`, VALID)
     ok(data.token, 'token should be present')
 
-    _globalToken = data.token
+    _globalToken = data.token 
   }
 })
