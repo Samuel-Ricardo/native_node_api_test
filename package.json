@@ -2,11 +2,13 @@
   "name": "native_node_api_test",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "app/api.js",
   "scripts": {
-    "dev": "node --watch app/api.js",
-    "test": "node --test app/api.test.js",
-    "test:dev": "node --watch --test app/api.test.js"
+    "docker:startup": "npm run test && npm run dev",
+    "dev": "node --watch .",
+    "test": "node --test .",
+    "test:dev": "node --watch --test ."
   },
   "keywords": [],
   "author": "Samuel Ricardo",

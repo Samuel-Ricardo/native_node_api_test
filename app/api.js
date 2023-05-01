@@ -20,6 +20,32 @@ async function loginRoute(request, response) {
 }
 
 
+async function createProductRoute(request, response) {
+  const {description, price} = JSON.parse(await once(request, "data"))
+
+const categories = {
+      premium: {
+        from: 101,
+        to: 500
+      },
+      regular: {
+        from: 51,
+        to: 100
+      },
+      basic: {
+        from: 0,
+        to: 50
+      },
+  }
+
+  const category = Object.keys(categories).find(key => {
+    const category = category[key]
+    return price >= category.from && price <= category.to
+  })
+
+  response.end(JSON.stringify({category}))
+}
+
 
 async function handler(req, res) {
   res.send({HI:" :D"})
