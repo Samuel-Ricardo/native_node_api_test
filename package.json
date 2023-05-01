@@ -8,7 +8,7 @@
     "docker:startup": "npm run test && npm run dev",
     "dev": "node --watch .",
     "test": "node --test .",
-    "test:dev": "node --watch --test ."
+    "test:dev": "node --test --watch ."
   },
   "keywords": [],
   "author": "Samuel Ricardo",
