@@ -14,7 +14,7 @@ async function loginRoute(request, response) {
     return response.end(JSON.stringify(INVALID_USER_ERROR))
   }
 
-  const token = jsonwebtoken.sign({ user, message: 'heyduude' }, TOKEN_KEY)
+  const token = jwt.sign({ user, message: 'heyduude' }, TOKEN_KEY)
 
   response.end(JSON.stringify({ token }))
 }
@@ -22,7 +22,6 @@ async function loginRoute(request, response) {
 
 async function createProductRoute(request, response) {
   const {description, price} = JSON.parse(await once(request, "data"))
-
   const categories = {
       premium: {
         from: 101,
@@ -36,14 +35,14 @@ async function createProductRoute(request, response) {
         from: 0,
         to: 50
       },
-  }
+    }
 
-  const category = Object.keys(categories).find(key => {
-    const category = category[key]
-    return price >= category.from && price <= category.to
-  })
+    const category = Object.keys(categories).find(key => {
+      const category = categories[key]
+      return price >= category.from && price <= category.to
+    })
 
-  response.end(JSON.stringify({category}))
+   response.end(JSON.stringify({ category }))
 }
 
 

@@ -25,10 +25,10 @@ describe('API Products Test Suit', () => {
 
   before(async () => {
     _server = (await import('./api.js')).app
-    await new Promise(resolve => _server.once('listening', resolve)) 
+    await new Promise(resolve => _server.once('listening', resolve))
+  
+    await setToken()
   })
-
-  before(async () => setToken())
 
   
   it ('It should create a pemiun product', async () => {
@@ -42,10 +42,9 @@ describe('API Products Test Suit', () => {
   }) 
 
   it ('It should create a basic product', async () => {
-    const data = await successfullyPostRequest(`${BASE_URL}/products`, {description:"cookie - basic", price:10})
+    const data = await successfullyPostRequest(`${BASE_URL}/products`, {description:"cookie - basic", price:60})
     deepStrictEqual(data.category, "basic")   
   })
-
 
   after(done => _server.close(done))
 })
