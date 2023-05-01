@@ -1,12 +1,12 @@
 FROM node:20-alpine
 
-RUN npm install
-
 WORKDIR /home/node/app
 
 COPY . ./ 
 
+RUN npm install
+
 USER node
 
-CMD ["npm","run","test","&&","npm", "run", "dev"]
+CMD ["npm", "run", "docker:startup"]
 EXPOSE 3000
